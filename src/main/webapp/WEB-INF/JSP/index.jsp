@@ -12,5 +12,6 @@
 <body>
 	<h1>Frituur Frita</h1>
 	<p>Vandaag zijn we ${message}</p>
+	<img alt="Frituur Frita" src="images/${message}.png">
 </body>
 </html>

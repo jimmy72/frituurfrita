@@ -15,7 +15,7 @@ class IndexController {
 	ModelAndView index() { 
 		String message;
 		int dagNummer = LocalDate.now().getDayOfWeek().getValue();
-		message = (dagNummer == 1 || dagNummer == 4) ? "Gesloten" : "Open";
+		message = (dagNummer == 1 || dagNummer == 4) ? "gesloten" : "open";
 		ModelAndView mv = new ModelAndView("index","message",message);
 		return mv;
 	}
