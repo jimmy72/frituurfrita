@@ -13,5 +13,10 @@
 	<h1>Frituur Frita</h1>
 	<p>Vandaag zijn we ${message}</p>
 	<img alt="Frituur Frita" src="images/${message}.png">
+	<dl>
+		<dt>Adres</dt>
+		<dd>${frituur.straat}&nbsp;${frituur.huisNr}<br>
+		${frituur.gemeente.postcode}&nbsp;${frituur.gemeente.naam}</dd>
+	</dl>
 </body>
 </html>
