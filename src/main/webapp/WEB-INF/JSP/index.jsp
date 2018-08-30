@@ -16,5 +16,8 @@
 		<dd>${frituur.straat}&nbsp;${frituur.huisNr}<br>
 		${frituur.gemeente.postcode}&nbsp;${frituur.gemeente.naam}</dd>
 	</dl>
+	<c:if test="${bezocht}">
+		<H2>Welkom terug!</H2>
+	</c:if>
 </body>
 </html>
