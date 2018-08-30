@@ -15,7 +15,7 @@ import be.vdab.frituurfrita.entities.Saus;
 @RequestMapping("/sauzen")
 class SausController {
 	
-	private static final String SAUS_VIEW = "sauzen";
+	private static final String SAUZEN_JSP = "sauzen";
 	private final List<Saus> sauzen = Arrays.asList(
 			new Saus(1L,"cocktail", new String[] {"mayonaise", "ketchup", "whisky", "peper", "zout"}),
 			new Saus(6L,"mayonaise", new String[] {"ei", "mosterd", "olie", "Peper", "Zout"}),
@@ -26,6 +26,6 @@ class SausController {
 	
 	@GetMapping
 	ModelAndView sauzen() {
-		return new ModelAndView(SAUS_VIEW, "sauzen", sauzen);
+		return new ModelAndView(SAUZEN_JSP, "sauzen", sauzen);
 	}
 }
