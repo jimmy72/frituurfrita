@@ -1,6 +1,5 @@
 package be.vdab.frituurfrita.services;
 
-import java.math.RoundingMode;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -25,6 +24,7 @@ class DefaultSausService implements SausService {
 	public List<Saus> findAll() {
 		for (SausRepository sausRepository : sausRepositories) {
 			try {
+				LOGGER.info("Sauzen gelezen via " + sausRepository.getClass().getSimpleName());
 				return sausRepository.findAll();
 			} catch (SausRepositoryException ex) {
 			  LOGGER.error("kan sauzen niet lezen", ex);

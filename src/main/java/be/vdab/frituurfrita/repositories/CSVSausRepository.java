@@ -10,12 +10,14 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Repository;
 
 import be.vdab.frituurfrita.entities.Saus;
 import be.vdab.frituurfrita.exceptions.SausRepositoryException;
 
 @Repository
+@Order(2)
 class CSVSausRepository implements SausRepository {
 
 	private final static Path PATH = Paths.get("D:\\files\\sauzen.csv");
