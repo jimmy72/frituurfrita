@@ -22,7 +22,7 @@ import be.vdab.frituurfrita.repositories.SausRepository;
 @RunWith(MockitoJUnitRunner.class)
 public class SausServiceTest {
 
-	private DefaultSausService sausService;
+	private SausService sausService;
 	@Mock
 	private SausRepository dummySausRepository;
 	
