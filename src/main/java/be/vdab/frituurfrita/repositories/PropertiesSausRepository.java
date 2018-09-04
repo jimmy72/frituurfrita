@@ -4,13 +4,13 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Repository;
 
@@ -21,11 +21,11 @@ import be.vdab.frituurfrita.exceptions.SausRepositoryException;
 @Order(1)
 public class PropertiesSausRepository implements SausRepository {
 
-	private final static Path PATH = Paths.get("D:\\files\\sauzen.properties");
 	private static final Logger LOGGER = LoggerFactory.getLogger(PropertiesSausRepository.class);
+	private final Path PATH;
 	
-	public PropertiesSausRepository() {
-		// TODO Auto-generated constructor stub
+	public PropertiesSausRepository(@Value("${propertiesSausPad}") Path path) {
+		this.PATH = path;
 	}
 	
 	@Override

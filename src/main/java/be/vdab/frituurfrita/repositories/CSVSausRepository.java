@@ -10,6 +10,7 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Repository;
 
@@ -20,11 +21,11 @@ import be.vdab.frituurfrita.exceptions.SausRepositoryException;
 @Order(2)
 class CSVSausRepository implements SausRepository {
 
-	private final static Path PATH = Paths.get("D:\\files\\sauzen.csv");
 	private static final Logger LOGGER = LoggerFactory.getLogger(CSVSausRepository.class);
-	
-	public CSVSausRepository() {
+	private final Path PATH;
 		
+	public CSVSausRepository(@Value("${csvSausPad}") Path path) {
+		this.PATH = path;
 	}
 	
 	private Saus makeSausOfString(String line) {
