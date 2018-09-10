@@ -22,3 +22,7 @@ dd {
 ul{
 	list-style-type: none;
 }
+
+#alfabet li{
+	display: inline;
+}

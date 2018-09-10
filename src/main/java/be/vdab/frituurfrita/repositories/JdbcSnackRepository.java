@@ -27,8 +27,9 @@ public class JdbcSnackRepository implements SnackRepository {
 	private final static String READ_SNACK = "select id, naam, prijs from snacks where id= :id";
 	private final static String UPDATE_SNACK = "update snacks set naam=:naam, prijs=:prijs where id=:id";
 	private final static String SELECT_BEGIN_NAAM = "select id, naam, prijs from snacks where naam like :beginNaam order by naam";
+	private final static String SELECT_ALL = "select id, naam, prijs from snacks order by id";
+	
 	public JdbcSnackRepository(NamedParameterJdbcTemplate template, DataSource dataSource) {
-		
 		this.TEMPLATE = template;
 		this.INSERT = new SimpleJdbcInsert(dataSource);
 		this.INSERT.withTableName("snacks"); 
@@ -59,6 +60,11 @@ public class JdbcSnackRepository implements SnackRepository {
 	@Override
 	public List<Snack> findByBeginNaam(String beginNaam) {
 		return this.TEMPLATE.query(SELECT_BEGIN_NAAM, Collections.singletonMap("beginNaam", beginNaam + '%'), SNACK_ROW_MAPPER);
+	}
+
+	@Override
+	public List<Snack> findAll() {
+		return this.TEMPLATE.query(SELECT_ALL, SNACK_ROW_MAPPER);
 	}
 
 }

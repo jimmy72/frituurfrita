@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 import be.vdab.frituurfrita.services.SausService;
 
 @Controller
-@RequestMapping("/sauzen")
+@RequestMapping("sauzen")
 class SausController {
 	
 	private static final String SAUZEN_JSP = "sauzen";
