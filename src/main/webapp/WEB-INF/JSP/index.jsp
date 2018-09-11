@@ -8,6 +8,7 @@
 	</c:import>
 </head>
 <body>
+<c:import url="/WEB-INF/JSP/menu.jsp"></c:import>
 	<h1>Frituur Frita</h1>
 	<p>Vandaag zijn we ${message}</p>
 	<img alt="Frituur Frita" src="images/${message}.png">

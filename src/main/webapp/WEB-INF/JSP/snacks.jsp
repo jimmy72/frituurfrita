@@ -6,14 +6,15 @@
 <html lang="nl">
 <head>
 <c:import url="/WEB-INF/JSP/head.jsp">
-	<c:param name='title' value="Snacks" />
+	<c:param name='title' value="Snacks (alfabet)" />
 </c:import>
 </head>
 <body>
+<c:import url="/WEB-INF/JSP/menu.jsp"></c:import>
 	<h1>Snacks</h1>
 	<ul id='alfabet'>
 		<c:forEach var='letter' items='${alfabet}'>
-			<c:url value='/snacks' var='url'>
+			<c:url value='/snacks/alfabet' var='url'>
 				<c:param name='beginletter' value='${letter}' />
 			</c:url>
 			<li><a href='${url}'>${letter}</a>&nbsp;&nbsp;</li>
@@ -22,10 +23,12 @@
 	<c:if test='${not empty snacks}'>
 		<ul>
 			<c:forEach var='snack' items='${snacks}'>
-				<li>${snack.naam}</li>
+				<spring:url var="url" value="/snacks/{id}">
+					<spring:param name="id" value="${snack.id}"></spring:param>
+				</spring:url>
+				<li><a href="${url}"> <c:out value="${snack.naam}"></c:out>&nbsp;${snack.prijs}</a></li>
 			</c:forEach>
 		</ul>
 	</c:if>
-
 </body>
 </html>

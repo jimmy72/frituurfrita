@@ -8,8 +8,8 @@
 </c:import>
 </head>
 <body>
+	<c:import url="/WEB-INF/JSP/menu.jsp"></c:import>
 	<h1>Sauzen</h1>
-	
 	<c:forEach var="saus" items="${sauzen}" varStatus="status">
 		<h2>${saus.naam}</h2>
 		<img alt="${saus.naam}" src="<c:url value='/images/${saus.naam}.png'></c:url>">

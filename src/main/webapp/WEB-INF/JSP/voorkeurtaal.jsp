@@ -8,6 +8,7 @@
 </c:import>
 </head>
 <body>
+	<c:import url="/WEB-INF/JSP/menu.jsp"></c:import>
 	<h1>Voorkeurtaal</h1>
 	<p>Uw voorkeurtaal is ${voorkeurTaal ? "Nederlands" : "geen Nederlands"}</p>
 </body>
