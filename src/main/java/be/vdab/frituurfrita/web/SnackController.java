@@ -39,15 +39,15 @@ class SnackController {
 	}
 	
 	@PostMapping("{id}/wijzigen")
-	String wijzigen(@Valid Snack snack, BindingResult bindingResult) { 
+	ModelAndView wijzigen(@Valid Snack snack, BindingResult bindingResult) { 
 		if (bindingResult.hasErrors()) {
-			return SNACK_WIJZIGEN_VIEW;
+			return new ModelAndView(SNACK_WIJZIGEN_VIEW);
 		}
 		try {
 			snackService.update(snack);
-			return REDIRECT_URL_NA_WIJZIGEN;
+			return new ModelAndView(REDIRECT_URL_NA_WIJZIGEN);
 		} catch (SnackNotFoundException ex) {
-			return REDIRECT_URL_BIJ_SNACK_NIET_GEVONDEN;
+			return new ModelAndView(REDIRECT_URL_BIJ_SNACK_NIET_GEVONDEN);
 		}
 	}
 	
