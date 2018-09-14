@@ -23,7 +23,7 @@
 	<c:if test='${not empty snacks}'>
 		<ul>
 			<c:forEach var='snack' items='${snacks}'>
-				<spring:url var="url" value="/snacks/{id}">
+				<spring:url var="url" value="/snacks/{id}/wijzigen">
 					<spring:param name="id" value="${snack.id}"></spring:param>
 				</spring:url>
 				<li><a href="${url}"> <c:out value="${snack.naam}"></c:out>&nbsp;${snack.prijs}</a></li>

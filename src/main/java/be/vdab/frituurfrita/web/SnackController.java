@@ -8,30 +8,47 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import be.vdab.frituurfrita.entities.Snack;
+import be.vdab.frituurfrita.exceptions.SnackNotFoundException;
 import be.vdab.frituurfrita.services.SnackService;
 
 @Controller
 @RequestMapping("/snacks")
-class SnacksController {
+class SnackController {
 	private static final String SNACKS_VIEW = "snacks";
-	private static final String SNACK_VIEW = "snack";
+	private static final String SNACK_WIJZIGEN_VIEW = "snackwijzigen";
 	private static final String BEGINLETTERS_VIEW = "beginletters";
+	private static final String REDIRECT_URL_NA_WIJZIGEN = "redirect:/";
+	private static final String REDIRECT_URL_BIJ_SNACK_NIET_GEVONDEN = "snacknietgevonden";
 	private final SnackService snackService;
 	private static final char[] ALFABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 	
-	SnacksController(SnackService snackService) {
+	SnackController(SnackService snackService) {
 		this.snackService = snackService;
 	}
 	
-	@GetMapping("{id}") 
+	@GetMapping("{id}/wijzigen") 
 	ModelAndView snackDetail(@PathVariable long id) { 
-		ModelAndView modelAndView = new ModelAndView(SNACK_VIEW);
-		snackService.read(id).ifPresent(snack -> modelAndView.addObject("snack", snack));
+		ModelAndView modelAndView = new ModelAndView(SNACK_WIJZIGEN_VIEW);
+		snackService.read(id).ifPresent(snack -> modelAndView.addObject("snack",snack));
 		return modelAndView;
+	}
+	
+	@PostMapping("{id}/wijzigen")
+	String wijzigen(@Valid Snack snack, BindingResult bindingResult) { 
+		if (bindingResult.hasErrors()) {
+			return SNACK_WIJZIGEN_VIEW;
+		}
+		try {
+			snackService.update(snack);
+			return REDIRECT_URL_NA_WIJZIGEN;
+		} catch (SnackNotFoundException ex) {
+			return REDIRECT_URL_BIJ_SNACK_NIET_GEVONDEN;
+		}
 	}
 	
 	@GetMapping(path = "/alfabet")

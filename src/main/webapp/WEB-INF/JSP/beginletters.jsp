@@ -16,14 +16,14 @@
 	<form:form action='${url}' modelAttribute='beginLettersForm'
 		method='get'>
 		<form:label path='beginletters'>Beginletters:<form:errors path='beginletters'></form:errors></form:label>
-		<form:input path='beginletters' autofocus='autofocus' />
+		<form:input path='beginletters' autofocus='autofocus' type='text' required='required'/>
 		<input type='submit' value='Zoeken'>
 		<span><form:errors cssClass='fout'/></span>
 	</form:form>
 	<c:if test="${not empty snacks}">
 		<ul>
 			<c:forEach var="snack" items="${snacks}">
-				<spring:url var="url" value="/snacks/{id}">
+				<spring:url var="url" value="/snacks/{id}/wijzigen">
 					<spring:param name="id" value="${snack.id}"></spring:param>
 				</spring:url>
 				<li><a href="${url}"><c:out value="${snack.naam}"></c:out>&nbsp;${snack.prijs}</a></li>

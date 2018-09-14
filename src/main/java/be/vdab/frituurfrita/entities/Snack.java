@@ -2,10 +2,20 @@ package be.vdab.frituurfrita.entities;
 
 import java.math.BigDecimal;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 public class Snack {
 	private long id;
+	@NotBlank
 	private String naam;
+	@NotNull @Min(0)
 	private BigDecimal prijs;
+	
+	public Snack() {
+		
+	}
 	
 	public Snack(String naam, BigDecimal prijs) {
 		this.naam = naam;
