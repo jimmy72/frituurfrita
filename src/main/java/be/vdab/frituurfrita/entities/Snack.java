@@ -6,9 +6,12 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.SafeHtml;
+
 public class Snack {
 	private long id;
 	@NotBlank
+	@SafeHtml
 	private String naam;
 	@NotNull @Min(0)
 	private BigDecimal prijs;

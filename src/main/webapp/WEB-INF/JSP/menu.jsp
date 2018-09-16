@@ -8,6 +8,7 @@
 			<li><a href="<c:url value='/snacks/beginletters'/>">Snacks (beginletters)</a></li>
 			<li><a href="<c:url value='/sauzen'/>">Sauzen</a></li>
 			<li><a href="<c:url value='/voorkeurtaal'/>">Voorkeurtaal</a></li>
+			<li><a href="<c:url value='/jackson'/>">Jackson</a></li>
 		</ul>
 	</nav>
 </header>
