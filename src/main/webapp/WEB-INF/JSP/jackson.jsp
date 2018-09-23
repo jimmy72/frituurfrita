@@ -17,7 +17,6 @@
 </c:url>
 
 <a href="${url}">Get dollarkoers</a>
-
 	<c:choose>
 		<c:when test="${empty usd}">
 			<p>niet gevonden</p>

@@ -2,6 +2,7 @@ package be.vdab.frituurfrita.services;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -40,6 +41,17 @@ public class DefaultSnackService implements SnackService{
 	@Override
 	public List<Snack> findAll() {
 		return this.snackRepository.findAll();
+	}
+	
+	/** 
+	 * 
+	 * @return List of characters of first letters of all snacks
+	 */
+	public List<Character> findDistinctBeginLetters(){
+		return this.snackRepository.findAll().stream()
+				.map(snack -> snack.getNaam().toUpperCase().charAt(0))
+				.distinct()
+				.collect(Collectors.toList());
 	}
 	
 }

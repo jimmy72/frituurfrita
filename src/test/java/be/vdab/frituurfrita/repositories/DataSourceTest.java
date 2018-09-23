@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class DataSourceTest {
 
 	@Test
-	public void goedGeïnitialiseerd() {
+	public void goedGeinitialiseerd() {
 		
 	}
 

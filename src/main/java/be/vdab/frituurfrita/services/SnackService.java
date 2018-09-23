@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import be.vdab.frituurfrita.entities.Snack;
 
+
 public interface SnackService {
 	public abstract Optional<Snack> read(long id);
 	public abstract void update(Snack snack);
